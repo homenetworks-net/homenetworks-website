@@ -79,7 +79,7 @@
 
 <!-- Sticky Features  -->
 {{ if .Params.features.enable }}
-{{ partial "components/features-sticky-layout" (dict "Class" "max-xl:mb-10 max-xl:last:mb-0 xl:sticky") }}
+{{ partial "components/features-sticky-layout" (dict "Class" "mb-14") }}
 {{ end }}
 <!-- Sticky Features  -->
 
@@ -106,5 +106,17 @@
 {{ partial "call-to-action" (dict "hideCTAButton" false) }}
 {{ end }}
 <!-- Call to action -->
+
+<!-- Pricing -->
+{{ if .Params.pricing.enable }}
+{{ partial "pricing-short" }}
+{{ end }}
+<!-- Pricing -->
+
+<!-- Contact -->
+{{ if .Params.contact.enable }}
+{{ partial "contact-form" }}
+{{ end }}
+<!-- Contact -->
 
 {{ end }}

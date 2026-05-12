@@ -36,6 +36,18 @@
 })();
 
 document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector(".header");
+  const setHeaderOffset = () => {
+    const headerHeight = header?.offsetHeight || 0;
+    document.documentElement.style.setProperty(
+      "--header-offset",
+      `${headerHeight - 16}px`,
+    );
+  };
+
+  setHeaderOffset();
+  window.addEventListener("resize", setHeaderOffset);
+
   AOS.init({
     once: true,
   });
@@ -45,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (priceCheck){
     priceCheck.addEventListener("change", (e) => {
       const priceCount = document.querySelectorAll(".price-count");
-  
+
       if (e.target.checked) {
         priceCount.forEach((count) => {
           animateValue(count, 0, count.dataset.countYearly, 200, 0);
@@ -57,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
- 
+
 });
 
 function animateValue(obj, start, end, duration, decimals) {

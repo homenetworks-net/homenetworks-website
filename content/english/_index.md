@@ -10,16 +10,17 @@ banner:
   buttons:
     - label: "Start 14 Days Free Trial"
       enable: true
-      link: "/contact/"
+      link: "#contact"
     - label: "Request Free Demo"
       enable: true
-      link: "/contact/"
+      link: "#contact"
   list:
   - No Credit Card Required
   - Cancel Anytime
 
 customer_logos:
   enable: true
+  logos_line: false
 
 features:
   enable: true
@@ -28,12 +29,18 @@ feature_cards:
   enable: true
 
 integration:
-  enable: true
+  enable: false
 
 testimonials:
-  enable: true
+  enable: false
 
 call_to_action:
+  enable: false
+
+pricing:
   enable: true
-  
+
+contact:
+  enable: true
+
 ---

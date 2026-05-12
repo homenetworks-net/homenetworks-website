@@ -1,7 +1,7 @@
 {{ $classes := .Class }}
 {{ with site.GetPage "sections/features" }}
 {{ if .Params.enable }}
-<section class="section">
+<section class="section" id="feature">
   <div class="container">
     {{ range $index, $item := .Params.features }}
     <div class="overflow-hidden rounded-3xl border border-border bg-primary {{ $classes }}  {{ if eq $index 1 }} xl:top-[160px] {{ else }} xl:top-[120px] {{ end }}">
