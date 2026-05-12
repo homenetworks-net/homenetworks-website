@@ -11,7 +11,7 @@ logo_height = "26px"
 # if logo_webp set false, will not generate WEBP version of logo | default is true
 logo_webp = true
 # logo text will only show when logo is missing.
-logo_text = "Darkrise"
+logo_text = "Homenetworks"
 # navbar fixed to top
 navbar_fixed = true
 # theme-mode
@@ -27,7 +27,7 @@ google_adsense = ""     # example: ca-pub-xxxxxxxxxxxxxxxx
 # custom script on header, example: custom_script= "<script>console.log(\"Hello World\")</script>"
 custom_script = ""
 # copyright
-copyright = "Copyright © 2025 Darkrise. All Rights Reserved"
+copyright = "Copyright © 2026 Homenetworks. All Rights Reserved"
 
 
 # Preloader
@@ -39,8 +39,8 @@ preloader = "" # use jpg, png, svg or gif format.
 # Navigation button
 [navigation_button]
 enable = true
-label = "Get This Template"
-link = "https://gethugothemes.com/products/darkrise"
+label = "Get In Touch"
+link = "#contact"
 
 # search
 # search module: https://github.com/gethugothemes/hugo-modules/tree/master/search
@@ -63,11 +63,11 @@ content = "You must replace the **baseURL** in **hugo.toml** file when deploying
 # seo meta data for OpenGraph / Twitter Card
 # seo module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/basic-seo
 [metadata]
-keywords = ["SaaS", "Hugo"]
-description = "SaaS & Startup Template"
-author = "gethugothemes"
-twitter = "zeon_studio"
-image = "images/og-image.png"
+keywords = ["Homenetworks", "residential internet provider", "fiber broadband", "home Wi-Fi", "IPTV services", "IP proxy", "high-speed internet", "low-latency network", "network uptime monitoring", "smart home connectivity"]
+description = "Homenetworks is a residential broadband provider offering high-speed fiber internet, IPTV, and IP proxy services with live network stats and device insights."
+author = "Homenetworks"
+twitter = ""
+image = ""
 
 
 # site verifications

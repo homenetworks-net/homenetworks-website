@@ -1,1 +1,14 @@
 /* Add your own custom styles here */
+
+:root {
+  --header-offset: 96px;
+}
+
+html {
+  scroll-padding-top: var(--header-offset);
+}
+
+section[id] {
+  scroll-margin-top: var(--header-offset);
+}
+

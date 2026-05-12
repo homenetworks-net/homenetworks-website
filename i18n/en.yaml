@@ -2,6 +2,7 @@ company : Company
 product : Product
 resources : Resources
 services : Services
+contacts : Contacts
 send: Send Message
 first_name : First Name
 email : Email
