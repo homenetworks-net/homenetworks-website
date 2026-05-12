@@ -107,4 +107,10 @@
 {{ end }}
 <!-- Call to action -->
 
+<!-- Pricing -->
+{{ if .Params.pricing.enable }}
+{{ partial "pricing-short" }}
+{{ end }}
+<!-- Pricing -->
+
 {{ end }}

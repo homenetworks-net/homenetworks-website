@@ -20,6 +20,7 @@ banner:
 
 customer_logos:
   enable: true
+  logos_line: false
 
 features:
   enable: true
@@ -28,12 +29,18 @@ feature_cards:
   enable: true
 
 integration:
-  enable: true
+  enable: false
 
 testimonials:
-  enable: true
+  enable: false
 
 call_to_action:
   enable: true
-  
+
+pricing:
+  enable: true
+
+contact:
+  enable: true
+
 ---

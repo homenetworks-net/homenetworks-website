@@ -1,0 +1,102 @@
+<!-- Pricing -->
+{{ with site.GetPage "sections/pricing" }}
+  {{ if .Params.enable }}
+    <section class="section relative">
+      <div class="container">
+        <div class="row">
+          {{ partial "page-header" (dict "Title" .Title "Description" .Params.description) }}
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute left-1/2 top-[-82px] -z-10 h-[424px] w-[70%] -translate-x-1/2 rounded-full from-secondary via-secondary to-red-700 to-90% opacity-60 blur-[100px] bg-linear-[270deg] lg:w-[619px] lg:rotate-[-19deg]"></div>
+          <!--  All Pricing Card -->
+          <div class="col-12 pt-20">
+            <div class="row gx-2">
+              <div class="col-12 pb-16" data-aos="fade-up-sm" data-aos-delay="200">
+                <div class="flex items-center justify-center gap-x-3">
+                  {{ range $index, $item := .Params.plans_labels }}
+                  <span class="select-none {{ if eq $index 0 }}
+                          order-0
+                        {{ else }}
+                          order-3
+                        {{ end }}">{{ $item }}</span>
+                  {{ end }}
+                  <label class="order-1 relative inline-block h-7 w-12 cursor-pointer rounded-full bg-secondary">
+                    <span class="sr-only">Pricing Switcher</span>
+                    <input type="checkbox" id="checkbox" class="pricing-check peer w-full cursor-pointer opacity-0"/>
+                    <span
+                      class="absolute left-0 top-0 cursor-pointer before:absolute before:left-1 before:top-1 before:h-5 before:w-5 before:translate-x-0 before:rounded-full before:bg-white before:transition-all before:delay-75 before:duration-300 peer-checked:before:translate-x-5"></span>
+                  </label>
+
+                  <span
+                    class="order-3 rounded-full bg-white bg-linear-to-b from-white to-dark/50 px-3 py-1 text-sm font-bold text-text-dark">
+                    {{ .Params.discount }}</span>
+                </div>
+              </div>
+              {{/* pricing cards */}}
+              {{ range $index, $item := .Params.plans }}
+              <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay="{{ $index }}00">
+                <div
+                  class="{{ if $item.active }}
+                        active border border-border
+                      {{ end }} group relative mb-12 flex min-h-full flex-col overflow-hidden rounded-lg bg-body px-8 py-12 last:mb-0 md:px-11">
+                  <div class="flex flex-wrap items-center gap-4">
+                    <h3 class="counter h5 tracking-none">
+                      <span>{{ $item.title }}</span>
+                    </h3>
+                  </div>
+
+                  <p class="mt-2 opacity-70">
+                    {{ $item.description }}
+                  </p>
+
+                  <div class="mb-8 mt-10 flex flex-col gap-2 sm:flex-row sm:items-end">
+                    <strong class="h1 font-medium leading-[1]">
+                      {{ $item.price_prefix }}
+                      <span class="price-count" data-count-yearly="{{ $item.price_yearly }}"
+                            data-count-monthly="{{ $item.price_monthly }}">
+                        {{ $item.price_monthly }}
+                      </span>
+                    </strong>
+                    <div>
+                      <span class="text-monthly opacity-70">
+                        {{ $item.price_description_monthly }}
+                      </span>
+                      <span class="text-yearly hidden opacity-70">
+                        {{ $item.price_description_yearly }}
+                      </span>
+                    </div>
+                  </div>
+
+                  {{ if $item.button.enable }}
+                  {{ partial "components/animated-button" (dict "Link" $item.button.link "Label" $item.button.label
+                  "HideIcon" false "fullWidth" true "Class" "btn-primary justify-center") }}
+                  {{ end }}
+
+
+                  <ul class="mt-8 flex flex-col space-y-4">
+                    {{ range $item.features }}
+                    <li>
+                      <i class="fa fa-check text-white inline-block mr-2.5 text-base"></i>
+                      {{ . }}
+                    </li>
+                    {{ end }}
+
+                  </ul>
+
+                  {{/* Overlay */}}
+                  <div aria-hidden="true"
+                       class="pointer-events-none invisible absolute -right-12 bottom-0 z-0 h-[176px] w-[294px] rotate-[19deg] rounded-full from-secondary/40 from-40% via-secondary via-60% to-primary opacity-80 blur-[82px] bg-linear-[60deg] group-[.active]:visible">
+                  </div>
+                </div>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+          <!--  All Pricing Card -->
+        </div>
+      </div>
+    </section>
+
+  {{ end }}
+{{ end }}
+<!-- /Pricing -->
