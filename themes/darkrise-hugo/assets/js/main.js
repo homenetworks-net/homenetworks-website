@@ -136,6 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
           return 0;
         },
       };
+      const circularChartAnimation = {
+        duration: 1800,
+        easing: "easeOutQuart",
+        animateScale: true,
+        animateRotate: true,
+      };
       const reserveCanvasSize = () => {
         if (!isCircularChart) return;
 
@@ -168,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const chartOptions = {
         responsive: !isCircularChart,
         maintainAspectRatio: false,
-        animation: isCircularChart ? false : chartAnimation,
+        animation: isCircularChart ? circularChartAnimation : chartAnimation,
         plugins: {
           legend: { display: isCircularChart },
           tooltip: {
