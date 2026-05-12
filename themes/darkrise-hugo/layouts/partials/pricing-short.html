@@ -1,13 +1,13 @@
 <!-- Pricing -->
 {{ with site.GetPage "sections/pricing" }}
   {{ if .Params.enable }}
-    <section class="section relative">
+    <section class="section relative" id="pricing">
       <div class="container">
         <div class="row">
           {{ partial "page-header" (dict "Title" .Title "Description" .Params.description) }}
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute left-1/2 top-[-82px] -z-10 h-[424px] w-[70%] -translate-x-1/2 rounded-full from-secondary via-secondary to-red-700 to-90% opacity-60 blur-[100px] bg-linear-[270deg] lg:w-[619px] lg:rotate-[-19deg]"></div>
+            class="pointer-events-none absolute left-1/2 top-[-82px] -z-10 h-[424px] w-[60%] -translate-x-1/2 rounded-full from-secondary via-secondary to-red-700 to-90% opacity-60 blur-[100px] bg-linear-[270deg] lg:w-[530px] lg:rotate-[-19deg]"></div>
           <!--  All Pricing Card -->
           <div class="col-12 pt-20">
             <div class="row gx-2">

@@ -10,10 +10,10 @@ banner:
   buttons:
     - label: "Start 14 Days Free Trial"
       enable: true
-      link: "/contact/"
+      link: "#contact"
     - label: "Request Free Demo"
       enable: true
-      link: "/contact/"
+      link: "#contact"
   list:
   - No Credit Card Required
   - Cancel Anytime

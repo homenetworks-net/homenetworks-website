@@ -12,7 +12,7 @@ features:
     - Data analyzing
   button:
     label: "Get Started Now"
-    link: "/"
+    link: "#contact"
     enable: true
 - title: Bring visitors from different sources.
   images:
@@ -26,7 +26,7 @@ features:
     - Data analyzing
   button:
     label: "Get Started Now"
-    link: "/"
+    link: "#contact"
     enable: true
 
 enable: true # enable and disable this section

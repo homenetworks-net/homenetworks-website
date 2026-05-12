@@ -21,7 +21,7 @@ plans:
       - Free Trial Period
     button:
       label: "Get Started Now"
-      link: "/contact/"
+      link: "#contact"
       enable: true
   - title: Standard
     active: true
@@ -37,7 +37,7 @@ plans:
       - Free Trial Period
     button:
       label: "Get Started Now"
-      link: "/contact/"
+      link: "#contact"
       enable: true
   - title: Pro
     active: false
@@ -54,7 +54,7 @@ plans:
       - More Facilities
     button:
       label: "Get Started Now"
-      link: "/contact/"
+      link: "#contact"
       enable: true
 features:
   title: All features included
