@@ -35,7 +35,7 @@ testimonials:
   enable: false
 
 call_to_action:
-  enable: true
+  enable: false
 
 pricing:
   enable: true
