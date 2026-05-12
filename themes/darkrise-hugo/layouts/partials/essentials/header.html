@@ -137,7 +137,8 @@
 </header>
 
 {{ $currentPath :=  .RelPermalink | relURL }}
-{{ $isHome := eq $currentPath "/" }}
+{{ $baseUrl := site.Home.RelPermalink | relURL }}
+{{ $isHome := eq $currentPath $baseUrl }}
 {{ $isChangelog := strings.HasPrefix $currentPath "/changelog" }}
 
 <!-- Show background image for home or changelog pages -->
