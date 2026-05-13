@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       type: "line",
       labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      values: [62, 65, 69, 68, 76, 79, 83, 81, 85, 88, 91, 94],
+      values: [62, 65, 68, 68, 70, 79, 83, 82, 83, 88, 91, 94],
     },
     {
       labels: ["Q1", "Q2", "Q3", "Q4"],
@@ -75,12 +75,33 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       type: "polarArea",
       labels: ["Q1", "Q2", "Q3", "Q4"],
-      values: [36, 24, 19, 21],
+      values: [21, 19, 24, 36],
     },
   ];
 
   const featureCharts = document.querySelectorAll("[data-feature-chart]");
   if (window.Chart && featureCharts.length) {
+    const parseChartProfile = (rawProfile) => {
+      if (!rawProfile) return null;
+
+      try {
+        const profile = JSON.parse(rawProfile);
+        if (
+          !profile ||
+          !Array.isArray(profile.labels) ||
+          !Array.isArray(profile.values) ||
+          !profile.labels.length ||
+          !profile.values.length
+        ) {
+          return null;
+        }
+
+        return profile;
+      } catch (_error) {
+        return null;
+      }
+    };
+
     const hexToRgba = (hex, alpha = 1) => {
       if (!hex || !hex.startsWith("#")) return hex;
       const normalized =
@@ -100,10 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const chartIndex = Number(canvas.dataset.featureChartIndex || 0);
       const chartOffset = Number(canvas.dataset.featureChartOffset || 0);
-      const profile =
+      const fallbackProfile =
         featureChartProfiles[
           (chartIndex + chartOffset) % featureChartProfiles.length
         ];
+      const profile =
+        parseChartProfile(canvas.dataset.featureChartProfile) || fallbackProfile;
       const primaryColor = canvas.dataset.chartPrimary || "#070707";
       const secondaryColor = canvas.dataset.chartSecondary || "#2d57ee";
       const borderColor = canvas.dataset.chartBorder || "#2c2c2c";

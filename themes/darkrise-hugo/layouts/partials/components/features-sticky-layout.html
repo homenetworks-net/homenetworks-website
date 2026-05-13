@@ -43,6 +43,7 @@
                     data-feature-chart
                     data-feature-chart-index="{{ $index }}"
                     data-feature-chart-offset="0"
+                    data-feature-chart-profile='{{ with .charts.primary }}{{ . | jsonify }}{{ end }}'
                     data-chart-primary="{{ site.Data.theme.colors.default.theme_color.primary }}"
                     data-chart-secondary="{{ site.Data.theme.colors.default.theme_color.secondary }}"
                     data-chart-border="{{ site.Data.theme.colors.default.theme_color.border }}"
@@ -58,6 +59,7 @@
                     data-feature-chart
                     data-feature-chart-index="{{ $index }}"
                     data-feature-chart-offset="3"
+                    data-feature-chart-profile='{{ with .charts.secondary }}{{ . | jsonify }}{{ end }}'
                     data-chart-primary="{{ site.Data.theme.colors.default.theme_color.primary }}"
                     data-chart-secondary="{{ site.Data.theme.colors.default.theme_color.secondary }}"
                     data-chart-border="{{ site.Data.theme.colors.default.theme_color.border }}"
