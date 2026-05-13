@@ -52,56 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
     once: true,
   });
 
-  const featureChartProfiles = [
-    {
-      type: "bar",
-      labels: ["Download", "Upload", "Streaming", "Uptime", "Mobile"],
-      values: [94, 76, 88, 99, 86],
-    },
-    {
-      type: "line",
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      values: [62, 65, 68, 68, 70, 79, 83, 82, 83, 88, 91, 94],
-    },
-    {
-      labels: ["Q1", "Q2", "Q3", "Q4"],
-      values: [58, 69, 84, 96],
-    },
-    {
-      type: "doughnut",
-      labels: ["Fiber", "IPTV", "VoIP", "Support"],
-      values: [42, 28, 18, 12],
-    },
-    {
-      type: "polarArea",
-      labels: ["Q1", "Q2", "Q3", "Q4"],
-      values: [21, 19, 24, 36],
-    },
-  ];
 
   const featureCharts = document.querySelectorAll("[data-feature-chart]");
   if (window.Chart && featureCharts.length) {
-    const parseChartProfile = (rawProfile) => {
-      if (!rawProfile) return null;
-
-      try {
-        const profile = JSON.parse(rawProfile);
-        if (
-          !profile ||
-          !Array.isArray(profile.labels) ||
-          !Array.isArray(profile.values) ||
-          !profile.labels.length ||
-          !profile.values.length
-        ) {
-          return null;
-        }
-
-        return profile;
-      } catch (_error) {
-        return null;
-      }
-    };
-
     const hexToRgba = (hex, alpha = 1) => {
       if (!hex || !hex.startsWith("#")) return hex;
       const normalized =
@@ -119,14 +72,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
 
-      const chartIndex = Number(canvas.dataset.featureChartIndex || 0);
-      const chartOffset = Number(canvas.dataset.featureChartOffset || 0);
-      const fallbackProfile =
-        featureChartProfiles[
-          (chartIndex + chartOffset) % featureChartProfiles.length
-        ];
-      const profile =
-        parseChartProfile(canvas.dataset.featureChartProfile) || fallbackProfile;
+      // Read profile from data attribute
+      const profileData = canvas.dataset.featureChartProfile;
+      if (!profileData) {
+        console.warn("No chart profile data found for canvas");
+        return;
+      }
+
+      let profile;
+      try {
+        profile = JSON.parse(profileData);
+      } catch (error) {
+        console.error("Failed to parse chart profile data:", error);
+        return;
+      }
+
+      if (!profile || !profile.labels || !profile.values) {
+        console.warn("Invalid chart profile data");
+        return;
+      }
       const primaryColor = canvas.dataset.chartPrimary || "#070707";
       const secondaryColor = canvas.dataset.chartSecondary || "#2d57ee";
       const borderColor = canvas.dataset.chartBorder || "#2c2c2c";
