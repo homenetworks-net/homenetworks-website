@@ -52,6 +52,239 @@ document.addEventListener("DOMContentLoaded", () => {
     once: true,
   });
 
+
+  const featureCharts = document.querySelectorAll("[data-feature-chart]");
+  if (window.Chart && featureCharts.length) {
+    const hexToRgba = (hex, alpha = 1) => {
+      if (!hex || !hex.startsWith("#")) return hex;
+      const normalized =
+        hex.length === 4
+          ? `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`
+          : hex;
+      const int = parseInt(normalized.slice(1), 16);
+      const r = (int >> 16) & 255;
+      const g = (int >> 8) & 255;
+      const b = int & 255;
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+
+    const createFeatureChart = (canvas) => {
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      // Read profile from data attribute
+      const profileData = canvas.dataset.featureChartProfile;
+      if (!profileData) {
+        console.warn("No chart profile data found for canvas");
+        return;
+      }
+
+      let profile;
+      try {
+        profile = JSON.parse(profileData);
+      } catch (error) {
+        console.error("Failed to parse chart profile data:", error);
+        return;
+      }
+
+      if (!profile || !profile.labels || !profile.values) {
+        console.warn("Invalid chart profile data");
+        return;
+      }
+      const primaryColor = canvas.dataset.chartPrimary || "#070707";
+      const secondaryColor = canvas.dataset.chartSecondary || "#2d57ee";
+      const borderColor = canvas.dataset.chartBorder || "#2c2c2c";
+      const lightColor = canvas.dataset.chartLight || "#f6f6f6";
+      const textColor = canvas.dataset.chartText || "#e9e9e9";
+      const barColors = [
+        hexToRgba(secondaryColor, 0.95),
+        hexToRgba(secondaryColor, 0.78),
+        hexToRgba(secondaryColor, 0.62),
+        hexToRgba(secondaryColor, 0.46),
+      ];
+      const chartType = profile.type || "bar";
+      const isLineChart = profile.type === "line";
+      const isCircularChart =
+        chartType === "doughnut" || chartType === "polarArea";
+      const chartAnimation = {
+        duration: 1800,
+        easing: "easeOutQuart",
+        animateScale: !isCircularChart,
+        animateRotate: isCircularChart,
+        delay: (context) => {
+          if (context.type === "data" && context.mode === "default") {
+            return context.dataIndex * 140 + context.datasetIndex * 80;
+          }
+
+          if (context.type === "active") {
+            return 0;
+          }
+
+          return 0;
+        },
+      };
+      const circularChartAnimation = {
+        duration: 1800,
+        easing: "easeOutQuart",
+        animateScale: true,
+        animateRotate: true,
+      };
+      const reserveCanvasSize = () => {
+        if (!isCircularChart) return;
+
+        const wrapper = canvas.parentElement;
+        const styles = wrapper ? window.getComputedStyle(wrapper) : null;
+        const paddingX = styles
+          ? parseFloat(styles.paddingLeft || "0") + parseFloat(styles.paddingRight || "0")
+          : 0;
+        const paddingY = styles
+          ? parseFloat(styles.paddingTop || "0") + parseFloat(styles.paddingBottom || "0")
+          : 0;
+        const width = Math.max(
+          1,
+          Math.floor((wrapper?.clientWidth || 0) - paddingX),
+        );
+        const height = Math.max(
+          1,
+          Math.floor((wrapper?.clientHeight || 0) - paddingY),
+        );
+        const pixelRatio = window.devicePixelRatio || 1;
+
+        canvas.width = Math.max(1, Math.floor(width * pixelRatio));
+        canvas.height = Math.max(1, Math.floor(height * pixelRatio));
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+      };
+
+      reserveCanvasSize();
+
+      const chartOptions = {
+        responsive: !isCircularChart,
+        maintainAspectRatio: false,
+        animation: isCircularChart ? circularChartAnimation : chartAnimation,
+        plugins: {
+          legend: {
+            display: isCircularChart,
+            position: isCircularChart ? (window.innerWidth < 768 ? "top" : "left") : "top",
+          },
+          tooltip: {
+            displayColors: false,
+            backgroundColor: hexToRgba(primaryColor, 0.92),
+            titleColor: lightColor,
+            bodyColor: lightColor,
+            borderColor: hexToRgba(borderColor, 0.9),
+            borderWidth: 1,
+          },
+        },
+        cutout: chartType === "doughnut" ? "56%" : undefined,
+        scales: isCircularChart
+          ? undefined
+          : {
+              y: {
+                beginAtZero: true,
+                suggestedMax: 100,
+                ticks: {
+                  color: hexToRgba(textColor, 0.78),
+                },
+                grid: {
+                  color: hexToRgba(lightColor, 0.14),
+                },
+              },
+              x: {
+                ticks: {
+                  color: hexToRgba(textColor, 0.82),
+                },
+                grid: {
+                  display: false,
+                },
+              },
+            },
+      };
+
+      const dataset = isCircularChart
+        ? {
+            data: profile.values,
+            backgroundColor: barColors,
+            hoverBackgroundColor: [
+              hexToRgba(secondaryColor, 1),
+              hexToRgba(secondaryColor, 0.88),
+              hexToRgba(secondaryColor, 0.74),
+              hexToRgba(secondaryColor, 0.6),
+            ],
+            borderColor: hexToRgba(primaryColor, 0.55),
+            borderWidth: chartType === "doughnut" ? 2 : 1,
+          }
+        : isLineChart
+        ? {
+            data: profile.values,
+            borderColor: hexToRgba(secondaryColor, 0.95),
+            backgroundColor: hexToRgba(secondaryColor, 0.2),
+            fill: true,
+            pointRadius: 4,
+            pointHoverRadius: 5,
+            pointBackgroundColor: lightColor,
+            pointBorderColor: hexToRgba(secondaryColor, 0.95),
+            pointBorderWidth: 2,
+            borderWidth: 3,
+            tension: 0.35,
+          }
+        : {
+            data: profile.values,
+            backgroundColor: barColors,
+            hoverBackgroundColor: [
+              hexToRgba(secondaryColor, 1),
+              hexToRgba(secondaryColor, 0.88),
+              hexToRgba(secondaryColor, 0.74),
+              hexToRgba(secondaryColor, 0.6),
+            ],
+            categoryPercentage: 0.95,
+            barPercentage: 0.9,
+            borderRadius: 10,
+            borderSkipped: false,
+            maxBarThickness: 64,
+          };
+
+      new window.Chart(ctx, {
+        type: chartType,
+        data: {
+          labels: profile.labels,
+          datasets: [dataset],
+        },
+        options: chartOptions,
+      });
+
+              canvas.dataset.chartInitialized = "true";
+            };
+
+            const observeFeatureChart = (canvas) => {
+              if (canvas.dataset.chartInitialized === "true") return;
+
+              if (!("IntersectionObserver" in window)) {
+                createFeatureChart(canvas);
+                return;
+              }
+
+              const observer = new IntersectionObserver(
+                (entries, io) => {
+                  entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+
+                    createFeatureChart(entry.target);
+                    io.unobserve(entry.target);
+                  });
+                },
+                {
+                  threshold: 0.35,
+                  rootMargin: "0px 0px -10% 0px",
+                },
+              );
+
+              observer.observe(canvas);
+            };
+
+            featureCharts.forEach(observeFeatureChart);
+  }
+
   // price Switcher
   const priceCheck = document.querySelector(".pricing-check");
   if (priceCheck){

@@ -11,4 +11,3 @@ html {
 section[id] {
   scroll-margin-top: var(--header-offset);
 }
-

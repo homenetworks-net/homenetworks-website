@@ -1,4 +1,18 @@
-<footer class="py-10 md:py-16 xl:py-24 relative z-10">
+{{ $footerBgPath := site.Home.Params.footer.background_image | default "/images/footer-bg.png" }}
+{{ $footerBgUrl := "" }}
+{{ with $footerBgPath }}
+  {{ $resourcePath := replaceRE "^/" "" . }}
+  {{ with resources.Get $resourcePath }}
+    {{ $footerBgUrl = .RelPermalink }}
+  {{ else }}
+    {{ $footerBgUrl = . | relURL }}
+  {{ end }}
+{{ end }}
+{{ if $footerBgUrl }}
+  <footer class="py-10 md:py-16 xl:py-24 relative z-10" style="background-image: url('{{ $footerBgUrl }}'); background-size: cover; background-position: bottom; background-repeat: no-repeat;">
+{{ else }}
+  <footer class="py-10 md:py-16 xl:py-24 relative z-10">
+{{ end }}
   <div class="container">
     <div class="row gap-y-6 justify-between lg:g-4">
       <div class="col-12 pb-7 md:pb-14">

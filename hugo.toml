@@ -143,6 +143,9 @@ lazy = false
 link = "plugins/cookie.js"
 lazy = false
 [[params.plugins.js]]
+link = "https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"
+lazy = false
+[[params.plugins.js]]
 link = "plugins/glightbox/glightbox.js"
 lazy = true
 [[params.plugins.js]]

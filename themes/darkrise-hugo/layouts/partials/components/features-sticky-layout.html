@@ -33,33 +33,42 @@
           </div>
         </div>
 
-        {{/* image */}}
-        <div class="lg:col-6">
-          <div class="rounded-3xl bg-body lg:pl-5">
-            <div class="flex min-h-full items-center px-5 md:justify-center md:px-10">
-              <div class="relative py-10 md:w-[60%] lg:w-auto lg:py-20 " data-aos="fade-up" data-aos-delay="250">
-                {{ range $minindex, $item := .images }}
-                {{ $getClass := "" }}
+        {{/* chart */}}
+        <div class="lg:col-6 h-full">
+          <div class="h-full rounded-3xl bg-body lg:pl-5">
+            <div class="flex h-full min-h-0 px-5 md:justify-center md:px-10">
+              <div class="relative grid h-full min-h-0 w-full grid-rows-[1.15fr_0.85fr] gap-3 py-6 lg:py-10" data-aos="fade-up" data-aos-delay="250">
+                <div class="relative z-10 min-h-[320px] overflow-hidden rounded-2xl border border-border/60 bg-primary/30 p-3 md:min-h-[420px] md:p-4">
+                  <canvas
+                    data-feature-chart
+                    data-feature-chart-index="{{ $index }}"
+                    data-feature-chart-offset="0"
+                    data-feature-chart-profile='{{ with .charts.primary }}{{ . | jsonify }}{{ end }}'
+                    data-chart-primary="{{ site.Data.theme.colors.default.theme_color.primary }}"
+                    data-chart-secondary="{{ site.Data.theme.colors.default.theme_color.secondary }}"
+                    data-chart-border="{{ site.Data.theme.colors.default.theme_color.border }}"
+                    data-chart-light="{{ site.Data.theme.colors.default.theme_color.light }}"
+                    data-chart-text="{{ site.Data.theme.colors.default.text_color.text }}"
+                    class="block h-full w-full max-h-full max-w-full"
+                    aria-label="{{ .title }} performance chart"
+                    role="img"></canvas>
+                </div>
 
-                {{ if and (eq $index 0) (eq $minindex 0) }}
-                {{ $getClass = "w-full" }}
-                {{ else if and (eq $index 0) (eq $minindex 1) }}
-                {{ $getClass = "w-[76%]" }}
-                {{ else if and (eq $index 1) (eq $minindex 0) }}
-                {{ $getClass = "w-[80%] mt-6" }}
-                {{ else if and (eq $index 1) (eq $minindex 1) }}
-                {{ $getClass = "w-[65%] ml-[30%] mt-[-18%]" }}
-                {{ else if and (eq $index 2) (eq $minindex 0) }}
-                {{ $getClass = "w-[60%] mx-auto" }}
-                {{ else if and (eq $index 2) (eq $minindex 1) }}
-                {{ $getClass = "w-[55%] ml-6 mt-[-20%]" }}
-                {{ else }}
-                {{ $getClass = "w-[70%] ml-[10%] mt-[-12%]" }}
-                {{ end }}
-
-                {{ partial "image" (dict "Src" $item "Alt" "feature-image" "Class" (printf "relative z-10 %s" $getClass)) }}
-                {{ end }}
-
+                <div class="relative z-10 min-h-[220px] overflow-hidden rounded-2xl border border-border/60 bg-primary/20 p-3 md:min-h-[300px] md:p-4">
+                  <canvas
+                    data-feature-chart
+                    data-feature-chart-index="{{ $index }}"
+                    data-feature-chart-offset="3"
+                    data-feature-chart-profile='{{ with .charts.secondary }}{{ . | jsonify }}{{ end }}'
+                    data-chart-primary="{{ site.Data.theme.colors.default.theme_color.primary }}"
+                    data-chart-secondary="{{ site.Data.theme.colors.default.theme_color.secondary }}"
+                    data-chart-border="{{ site.Data.theme.colors.default.theme_color.border }}"
+                    data-chart-light="{{ site.Data.theme.colors.default.theme_color.light }}"
+                    data-chart-text="{{ site.Data.theme.colors.default.text_color.text }}"
+                    class="block h-full w-full max-h-full max-w-full"
+                    aria-label="{{ .title }} secondary performance chart"
+                    role="img"></canvas>
+                </div>
 
                 <div aria-hidden="true"
                   class="pointer-events-none absolute bottom-px left-2/4 z-0 h-[353px] w-[509px] flex-none -translate-x-2/4 rotate-[-19deg] rounded-full from-secondary/40 via-secondary via-60% to-primary opacity-60 blur-[207px] bg-linear-[60deg]">

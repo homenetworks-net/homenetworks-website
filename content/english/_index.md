@@ -5,7 +5,7 @@ banner:
   content: "Gain invaluable predictive analytics and actionable insights empowering."
   note: Awarded as the best startup in 2023
   image:
-   src: "/images/banner.jpg" # Main Image
+   src: "/images/banner-01.jpg" # Main Image
    alt: "image alt"
   buttons:
     - label: "Start 14 Days Free Trial"
@@ -42,5 +42,8 @@ pricing:
 
 contact:
   enable: true
+
+footer:
+  background_image: "/images/footer-bg.png"
 
 ---
