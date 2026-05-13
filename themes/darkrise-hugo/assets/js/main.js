@@ -55,13 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const featureChartProfiles = [
     {
       type: "bar",
-      labels: ["Download", "Upload", "Latency", "Uptime"],
-      values: [94, 76, 88, 99],
+      labels: ["Download", "Upload", "Streaming", "Uptime", "Mobile"],
+      values: [94, 76, 88, 99, 86],
     },
     {
       type: "line",
-      labels: ["Router", "IoT", "Streaming", "Gaming"],
-      values: [68, 74, 89, 95],
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      values: [62, 65, 69, 68, 76, 79, 83, 81, 85, 88, 91, 94],
     },
     {
       labels: ["Q1", "Q2", "Q3", "Q4"],
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       type: "polarArea",
-      labels: ["Home", "Office", "Mobile", "Cloud"],
+      labels: ["Q1", "Q2", "Q3", "Q4"],
       values: [36, 24, 19, 21],
     },
   ];
@@ -176,7 +176,10 @@ document.addEventListener("DOMContentLoaded", () => {
         maintainAspectRatio: false,
         animation: isCircularChart ? circularChartAnimation : chartAnimation,
         plugins: {
-          legend: { display: isCircularChart },
+          legend: {
+            display: isCircularChart,
+            position: isCircularChart ? "left" : "top",
+          },
           tooltip: {
             displayColors: false,
             backgroundColor: hexToRgba(primaryColor, 0.92),
