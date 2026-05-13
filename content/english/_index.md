@@ -43,4 +43,7 @@ pricing:
 contact:
   enable: true
 
+footer:
+  background_image: "/images/footer-bg.png"
+
 ---
