@@ -5,10 +5,12 @@ features:
   charts:
     primary:
       type: "bar"
+      title: "Network Performance Metrics (%)"
       labels: ["Download", "Upload", "Streaming", "Uptime", "Mobile"]
       values: [94, 76, 88, 99, 86]
     secondary:
       type: "doughnut"
+      title: ""
       labels: ["Fiber", "IPTV", "VoIP", "Support"]
       values: [42, 28, 18, 12]
   images:
@@ -31,10 +33,12 @@ features:
   charts:
     primary:
       type: "line"
+      title: "Customer Satisfaction Growth (%)"
       labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
       values: [62, 65, 68, 68, 70, 79, 83, 82, 83, 88, 91, 94]
     secondary:
       type: "polarArea"
+      title: ""
       labels: ["Q1", "Q2", "Q3", "Q4"]
       values: [21, 19, 24, 36]
   list:

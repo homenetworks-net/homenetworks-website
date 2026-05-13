@@ -163,6 +163,20 @@ document.addEventListener("DOMContentLoaded", () => {
         maintainAspectRatio: false,
         animation: isCircularChart ? circularChartAnimation : chartAnimation,
         plugins: {
+          title: {
+            display: !!profile.title,
+            text: profile.title || "",
+            color: hexToRgba(textColor, 0.9),
+            font: {
+              size: 16,
+              weight: "600",
+              family: "'Inter', sans-serif",
+            },
+            padding: {
+              top: 10,
+              bottom: 20,
+            },
+          },
           legend: {
             display: isCircularChart,
             position: isCircularChart ? (window.innerWidth < 768 ? "top" : "left") : "top",
