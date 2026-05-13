@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         plugins: {
           legend: {
             display: isCircularChart,
-            position: isCircularChart ? "left" : "top",
+            position: isCircularChart ? (window.innerWidth < 768 ? "top" : "left") : "top",
           },
           tooltip: {
             displayColors: false,
