@@ -1,21 +1,21 @@
 ---
 # Banner
 banner:
-  title: "Earn revenue by selling anything from the internet on your app."
-  content: "Gain invaluable predictive analytics and actionable insights empowering."
-  note: Awarded as the best startup in 2023
+  title: "The fastest home internet provider built for the way you live."
+  content: "Fibre-speed broadband with real-time network monitoring."
+  note: The best on the market #1 residential broadband provider 2025
   image:
    src: "/images/banner-01.jpg" # Main Image
-   alt: "image alt"
+   alt: "Homenetworks metrics dashboard"
   buttons:
-    - label: "Start 14 Days Free Trial"
+    - label: "Start Your Trial"
       enable: true
       link: "#contact"
-    - label: "Request Free Demo"
+    - label: "View Plans & Pricing"
       enable: true
-      link: "#contact"
+      link: "#pricing"
   list:
-  - No Credit Card Required
+  - No Installation Fee
   - Cancel Anytime
 
 customer_logos:

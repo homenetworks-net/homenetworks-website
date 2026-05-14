@@ -1,64 +1,66 @@
 ---
-title: Pricing & Plans
-description: Gain invaluable predictive analytics and actionable insights, empowering your team to make data-driven decisions and close.
+title: Plans & Pricing
+description: Simple, transparent pricing with no hidden fees. Pick the speed that fits your household.
 enable: true
-discount: 25% OFF
+discount: 15% OFF
 plans_labels:
   - "Monthly"
   - "Yearly"
 plans:
   - title: Basic
     active: false
-    description: "It is simply dummy text of pricing."
+    description: "Perfect for light browsing, email, and streaming on 1-2 devices."
     price_prefix: "$"
-    price_monthly: "19"
-    price_yearly: "15"
-    price_description_monthly: "/month"
-    price_description_yearly: "/month"
+    price_monthly: "39"
+    price_yearly: "33"
+    price_description_monthly: "/mo"
+    price_description_yearly: "/mo"
     features:
-      - Flexible Subscription Plans
-      - Customizable Feature Bundles
-      - Free Trial Period
+      - 100 Mbps download speed
+      - Unlimited data - no caps
+      - Basic IPTV package (50+ channels)
     button:
-      label: "Get Started Now"
+      label: "Get Basic"
       link: "#contact"
       enable: true
   - title: Standard
     active: true
-    description: "It is simply dummy text of pricing."
+    description: "Ideal for families streaming, gaming, and working from home."
     price_prefix: "$"
-    price_monthly: "39"
-    price_yearly: "28"
-    price_description_monthly: "/month"
-    price_description_yearly: "/month"
+    price_monthly: "69"
+    price_yearly: "58"
+    price_description_monthly: "/mo"
+    price_description_yearly: "/mo"
     features:
-      - Flexible Subscription Plans
-      - Customizable Feature Bundles
-      - Free Trial Period
+      - 500 Mbps download speed
+      - Unlimited data - no caps
+      - Premium IPTV package (200+ channels)
+      - Priority support
     button:
-      label: "Get Started Now"
+      label: "Get Standard"
       link: "#contact"
       enable: true
   - title: Pro
     active: false
-    description: "It is simply dummy text of pricing."
+    description: "Maximum performance for power users, large households, and home offices."
     price_prefix: "$"
-    price_monthly: "49"
-    price_yearly: "40"
-    price_description_monthly: "/month"
-    price_description_yearly: "/month"
+    price_monthly: "99"
+    price_yearly: "84"
+    price_description_monthly: "/mo"
+    price_description_yearly: "/mo"
     features:
-      - Flexible Subscription Plans
-      - Customizable Feature Bundles
-      - Free Trial Period
-      - More Facilities
+      - 1 Gbps symmetric speed
+      - Unlimited data - no caps
+      - Full IPTV package (400+ channels)
+      - IP Proxy & Privacy VPN included
+      - Static IP address included
     button:
-      label: "Get Started Now"
+      label: "Get Pro"
       link: "#contact"
       enable: true
 features:
-  title: All features included
-  description: Gain invaluable predictive analytics and actionable insights, empowering your team to make data-driven decisions and close.
+  title: All plans include
+  description: No matter which plan you choose, you get the full Homenetworks experience - traffic monitoring, device management, 24/7 support, and zero installation fees.
   enable: true
 
 ---
