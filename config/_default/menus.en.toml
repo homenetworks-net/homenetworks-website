@@ -55,7 +55,7 @@ url = "/"
 # product menu
 [[product]]
 name = "Product Features"
-url = "#feature"
+url = "/#feature"
 
 #[[product]]
 #name = "Product Features"
@@ -72,7 +72,7 @@ url = "#feature"
 # resources menu
 [[resources]]
 name = "Pricing & Plans"
-url = "#pricing"
+url = "/#pricing"
 
 #[[resources]]
 #name = "Blog Details"
@@ -85,7 +85,7 @@ url = "#pricing"
 # contacts menu
 [[contacts]]
 name = "Contact Us"
-url = "#contact"
+url = "/#contact"
 
 #[[services]]
 #name = "Book A Demo"
