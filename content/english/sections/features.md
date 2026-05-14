@@ -33,7 +33,7 @@ features:
   charts:
     primary:
       type: "line"
-      title: "Customer Satisfaction Growth (%)"
+      title: "Customer Coverage Growth (%)"
       labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
       values: [62, 65, 68, 68, 70, 79, 83, 82, 83, 88, 91, 94]
     secondary:
