@@ -1,16 +1,16 @@
 ---
 title: "Contact Us"
-subtitle: Gain invaluable predictive analytics and actionable insights, empowering your team to make data-driven decisions and close.
-description: "this is meta description"
+subtitle: Check availability in your area, or ask our team anything about Homenetworks broadband plans.
+description: "Contact Homenetworks - residential broadband, IPTV, and IP proxy services"
 enable: true
 
 contact_form:
-  title: Get in touch with any <br/> general query.
+  title: Get in touch - we're <br/> here to help.
   list:
     - title: Give us a call
-      value: +603-555-0123
+      value: +555-555-5555
       icon: "/images/icons/svg/phone.svg"
     - title: Email
-      value: contact@darkrise.io
+      value: support@homenetworks.net
       icon: "/images/icons/svg/email.svg"
 ---

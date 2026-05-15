@@ -1,5 +1,5 @@
 ---
-title: Trusted by 15,000+ founders & business owners
+title: Trusted by 15,000+ connected households
 enable: true
 list:
   - "/images/customers-logo/1.svg"
